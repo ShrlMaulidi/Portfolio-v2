@@ -12,13 +12,13 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
       )}
 
       <aside className={`
-            /* MOBILE: Fixed Full Screen */
-            fixed inset-y-0 left-0 z-50 w-[280px] border-r flex flex-col overflow-y-auto
+            /* MOBILE: Fixed Full Screen, No Scroll (overflow-hidden) */
+            fixed inset-y-0 left-0 z-50 w-[280px] border-r flex flex-col overflow-hidden
             
             /* DESKTOP: Sticky, Contained, & Ukuran Pas (280px) */
             md:translate-x-0 md:static md:w-[280px] md:h-[calc(100vh-4rem)] md:sticky md:top-8 md:shadow-none md:border-none md:overflow-visible
 
-            /* KUNCI SMOOTH: Gunakan transition-all agar semua properti (warna, border) berubah halus */
+            /* KUNCI SMOOTH: Gunakan transition-all agar semua properti berubah halus */
             transition-all duration-500 ease-in-out
 
             ${isDark 
@@ -41,7 +41,7 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                   </div>
                   
                   <div className="flex items-center gap-1.5 mb-1">
-                      <h2 className={`text-xl font-bold tracking-tight transition-colors duration-300 ease-in-out ${isDark ? 'text-white' : 'text-gray-900'}`}>{profileData.name}</h2>
+                      <h2 className={`text-xl font-bold tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-gray-900'}`}>{profileData.name}</h2>
                       <img className="w-5 h-5" src="/img/verified.png" alt="Verified" />
                   </div>
                   <p className={`text-sm font-medium transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-gray-500'}`}>{profileData.username}</p>
