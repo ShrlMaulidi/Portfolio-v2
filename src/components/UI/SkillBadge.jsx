@@ -2,21 +2,22 @@ export default function SkillBadge({ name, icon, color, isDark }) {
   return (
     <div className="group relative flex flex-col items-center justify-center cursor-pointer">
       
-      {/* Circle Background */}
-      <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br ${color} p-[3px] shadow-xl transition-transform duration-300 group-hover:-translate-y-3 group-hover:scale-110`}>
+      {/* Circle: w-12 (48px) */}
+      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${color} p-[1.5px] shadow-sm hover:shadow-md transition-all duration-300 ease-in-out group-hover:-translate-y-1 group-hover:scale-105 relative overflow-hidden`}>
         
-        {/* Glass Effect Inner */}
-        <div className={`w-full h-full rounded-full backdrop-blur-sm flex items-center justify-center border-t border-white/30 transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#18181b]/90' : 'bg-white/90'}`}>
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-white/20 rounded-full pointer-events-none"></div>
+
+        {/* TRANSISI BACKGROUND DALAM */}
+        <div className={`w-full h-full rounded-full flex items-center justify-center shadow-inner transition-all duration-500 ease-in-out ${isDark ? 'bg-[#18181b]/20 backdrop-blur-sm border border-white/10' : 'bg-white/40 backdrop-blur-sm border border-white/40'}`}>
            
-           {/* LOGIKA GAMBAR: Jika ada icon tampilkan gambar, jika tidak tampilkan text */}
            {icon ? (
              <img 
                src={icon} 
                alt={name} 
-               className="w-15 h-15 md:w-20 md:h-20 object-contain drop-shadow-md" 
+               className="w-10 h-10 object-contain drop-shadow-sm transform transition-transform duration-300 group-hover:rotate-12" 
              />
            ) : (
-             <span className={`font-bold text-base md:text-xl tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-gray-800'}`}>
+             <span className="font-bold text-[10px] text-white drop-shadow-md">
                {name}
              </span>
            )}
@@ -24,11 +25,7 @@ export default function SkillBadge({ name, icon, color, isDark }) {
         </div>
       </div>
       
-      {/* Shadow Bawah */}
-      <div className="absolute -bottom-3 w-12 h-2 bg-black/50 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
-      {/* Opsional: Tooltip Nama saat Hover */}
-      <span className={`absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold px-2 py-1 rounded-md ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
+      <span className={`mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-semibold px-2 py-0.5 rounded ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
         {name}
       </span>
 
