@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+/* ANIMASI GLOBAL: Mengubah warna perlahan (500ms) */
+body {
+  font-family: 'Inter', sans-serif;
+  @apply transition-colors duration-500 ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+/* Warna Default (Light) */
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+/* Warna Dark Mode (Hitam Pekat) */
+.dark body {
+  background-color: #0c0c0c; 
+  color: #a1a1aa;
+}
+
+/* Custom Scrollbar */
+html { overflow-y: scroll; scrollbar-gutter: stable; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #52525b; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #71717a; }
