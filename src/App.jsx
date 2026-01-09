@@ -3,12 +3,15 @@ import { useState, useEffect } from "react";
 import Sidebar from "./components/Layout/Sidebar";
 import Hero from "./components/Sections/Hero";
 import Skills from "./components/Sections/Skills";
+import About from "./components/Sections/About";
+import Contact from "./components/Sections/Contact";
 
 const Home = ({ isDark }) => (
   // Tambahkan transisi di wrapper konten home
   <div className="animate-fade-in-up transition-all duration-500 ease-in-out">
     <Hero isDark={isDark} />
     <Skills isDark={isDark} />
+    
   </div>
 );
 
@@ -68,12 +71,12 @@ export default function App() {
                 
                 <Routes>
                     <Route path="/" element={<Home isDark={isDark} />} />
-                    <Route path="/about" element={<Placeholder title="Tentang Saya" />} />
+                    <Route path="/about" element={<About isDark={isDark} />} />
                     <Route path="/achievements" element={<Placeholder title="Pencapaian" />} />
                     <Route path="/projects" element={<Placeholder title="Proyek" />} />
                     <Route path="/dashboard" element={<Placeholder title="Dasbor" />} />
                     <Route path="/chat" element={<Placeholder title="Ruang Obrolan" />} />
-                    <Route path="/contact" element={<Placeholder title="Kontak" />} />
+                    <Route path="/contact" element={<Contact title="Kontak" isDark={isDark} />} />
                 </Routes>
 
                 {/* Footer */}

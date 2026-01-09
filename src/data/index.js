@@ -26,8 +26,59 @@ export const skillsData = [
   { name: "TS", icon: "/icons/typescript.svg", color: "from-blue-500 to-blue-700" },
   { name: "Vue", icon: "/icons/vue.svg", color: "from-green-400 to-green-600" },
   { name: "React", icon: "/icons/react.svg", color: "from-cyan-300 to-cyan-500" },
-  { name: "Laravel", icon: "/icons/laravel.svg", color: "from-red-500 to-red-700" },
+  { name: "Laravel", icon: "/skill/laravel.png", color: "from-red-500 to-red-700" },
   { name: "Node", icon: "/icons/nodejs.svg", color: "from-green-500 to-green-700" },
   { name: "Go", icon: "/icons/go.svg", color: "from-sky-400 to-sky-600" },
   { name: "PHP", icon: "/icons/php.svg", color: "from-indigo-400 to-indigo-600" },
+];
+
+export const careerData = [
+  {
+    id: 1,
+    role: "Backend Golang Developer",
+    company: "Pt. Affan Technology Indonesia (Parto.id)",
+    location: "Jambi, Indonesia 🇮🇩",
+    period: "Jul 2025 - Sep 2025",
+    duration: "2 Months",
+    type: "Internship",
+    mode: "Onsite",
+    logo: "/img/parto.png", // Pastikan ada gambar placeholder/logo di public/img
+    responsibilities: [
+      "Mengembangkan RESTful API menggunakan Golang (Gin Framework).",
+      "Mengoptimalkan query database PostgreSQL untuk performa tinggi.",
+      "Berkolaborasi dengan tim frontend untuk integrasi sistem."
+    ]
+  },
+  {
+    id: 2,
+    role: "Frontend Web Developer",
+    company: "Pt. Eltran Indonesia",
+    location: "Bandung, Indonesia 🇮🇩",
+    period: "May 2025 - Nov 2025",
+    duration: "6 Months",
+    type: "Internship",
+    mode: "Remote",
+    logo: "/img/len.png",
+    responsibilities: [
+      "Developed a responsive and interactive landing page using Next.js to promote company services and solutions.",
+      "Ensured SEO optimization and fast performance by leveraging Next.js features such as static site generation.",
+      "Collaborated with design and marketing teams to align web presence with brand identity."
+    ]
+  },
+  {
+    id: 3,
+    role: "Head of Technology in the Research and Technology Division",
+    company: "Himpunan Mahasiswa Sistem Informasi Universitas Jambi (HIMASI UNJA)",
+    location: "Jambi, Indonesia 🇮🇩",
+    period: "Dec 2024 - Present",
+    duration: "1 year 1 Month",
+    type: "Part-time",
+    mode: "Onsite",
+    logo: "/img/himasi.png",
+    responsibilities: [
+      "Memimpin divisi teknologi dalam pengembangan website organisasi.",
+      "Mengadakan workshop dan pelatihan teknologi untuk mahasiswa.",
+      "Mengelola infrastruktur IT organisasi."
+    ]
+  }
 ];
