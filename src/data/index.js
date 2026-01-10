@@ -18,18 +18,19 @@ export const navItems = [
 ];
 
 export const skillsData = [
-  { name: "HTML", icon: "/icons/html.svg", color: "from-orange-400 to-orange-600" },
+  { name: "HTML", icon: "/skill/html.png", color: "from-orange-400 to-orange-600" },
   { name: "CSS", icon: "/skill/css.png", color: "from-blue-400 to-blue-600" },
-  { name: "Bootstrap", icon: "/icons/bootstrap.svg", color: "from-purple-500 to-purple-700" },
-  { name: "Tailwind", icon: "/icons/tailwind.svg", color: "from-cyan-400 to-cyan-600" },
-  { name: "JS", icon: "/icons/javascript.svg", color: "from-yellow-300 to-yellow-500" },
-  { name: "TS", icon: "/icons/typescript.svg", color: "from-blue-500 to-blue-700" },
-  { name: "Vue", icon: "/icons/vue.svg", color: "from-green-400 to-green-600" },
-  { name: "React", icon: "/icons/react.svg", color: "from-cyan-300 to-cyan-500" },
+  { name: "Bootstrap", icon: "/skill/bootstrap.png", color: "from-purple-500 to-purple-700" },
+  { name: "Tailwind", icon: "/skill/tailwind.png", color: "from-cyan-400 to-cyan-600" },
+  { name: "JS", icon: "/skill/javascript.png", color: "from-yellow-300 to-yellow-500" },
+  { name: "Git", icon: "/skill/git.png", color: "from-red-500 to-red-700" },
+  { name: "Mysql", icon: "/skill/mysql.png", color: "from-blue-500 to-sky-600" },
+  { name: "React", icon: "/skill/react.png", color: "from-cyan-300 to-cyan-500" },
   { name: "Laravel", icon: "/skill/laravel.png", color: "from-red-500 to-red-700" },
-  { name: "Node", icon: "/icons/nodejs.svg", color: "from-green-500 to-green-700" },
-  { name: "Go", icon: "/icons/go.svg", color: "from-sky-400 to-sky-600" },
-  { name: "PHP", icon: "/icons/php.svg", color: "from-indigo-400 to-indigo-600" },
+  { name: "PHP", icon: "/skill/php.png", color: "from-indigo-400 to-blue-500" },
+  { name: "Figma", icon: "/skill/figma.png", color: "from-red-500 to-red-700" },
+  { name: "Excel", icon: "/skill/excel.png", color: "from-green-400 to-green-600" },
+  { name: "Word", icon: "/skill/word.png", color: "from-indigo-400 to-indigo-600" },
 ];
 
 export const careerData = [
@@ -80,5 +81,91 @@ export const careerData = [
       "Mengadakan workshop dan pelatihan teknologi untuk mahasiswa.",
       "Mengelola infrastruktur IT organisasi."
     ]
+  }
+];
+
+export const achievementsData = [
+  {
+    id: 1,
+    title: "Alibaba Cloud Certified Associate",
+    issuer: "Alibaba Academy",
+    date: "2025 - 2027",
+    // Ganti URL ini dengan gambar sertifikat asli Anda nanti
+    image: "/achievement/alibaba.png" 
+  },
+  {
+    id: 2,
+    title: "Sertifikat Kewirausahaan Digital",
+    issuer: "Digitalent",
+    date: "Agustur 2023",
+    image: "/achievement/dea.jpg"
+  },
+  {
+    id: 3,
+    title: "Seminar Cyber Security",
+    issuer: "ID-Networkers",
+    date: "Agustus 2024",
+    image: "/achievement/cyber.png"
+  },
+  {
+    id: 4,
+    title: "Certificate Next Generation ECS and OSS",
+    issuer: "Alibaba Cloud",
+    date: "2025 - 2026",
+    image: "/achievement/alibaba2.png"
+  },
+  {
+    id: 5,
+    title: "VPC Fundamental",
+    issuer: "Alibaba Cloud",
+    date: "2025 - 2026",
+    image: "/achievement/VPC.png"
+  },
+  {
+    id: 6,
+    title: "Secure and Fast - Alibaba Cloud Elastic Compute Service",
+    issuer: "Alibaba Cloud",
+    date: "2025 - 2026",
+    image: "/achievement/alibaba3.png"
+  }
+];
+
+
+export const projectsData = [
+  {
+    id: 1,
+    title: "myportfolio-shrlmaulidi",
+    desc: "Personal website & portfolio, built from scratch using React JS, and Tailwind CSS. Menampilkan profil, keahlian, dan portofolio secara interaktif.",
+    image: "/proyek/portfolio.png", // Ganti dengan screenshot website Anda
+    tech: ["Tailwind", "React", "JS"], // Pastikan nama ini cocok dengan nama di skillsData atau siapkan iconnya
+    link: "https://myportfolio-shrlmaulidi.vercel.app",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "CilotoTrack",
+    desc: "Website untuk pemantauan tugas karyawan.",
+    image: "/proyek/bbpk.png",
+    tech: ["React", "PHP", "Mysql", "Laravel", "Tailwind", "JS"],
+    link: "https://cilotrack.bbpkciloto.or.id/",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Sibas (Sistem Pelaporan Bank Sampah)",
+    desc: "Website untuk melaporkan Sampah untuk di angkut.",
+    image: "/proyek/websibas.png",
+    tech: ["PHP", "Mysql", "CSS", "HTML", "JS"],
+    link: "https://sibas-landing.vercel.app",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Sistem Presensi Internal",
+    desc: "Sistem absensi pegawai berbasis lokasi (GPS) dan foto selfie untuk instansi pemerintahan.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
+    tech: ["Laravel", "Vue", "Tailwind"],
+    link: "#",
+    featured: false
   }
 ];

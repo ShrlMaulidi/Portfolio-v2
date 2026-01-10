@@ -5,9 +5,10 @@ import Hero from "./components/Sections/Hero";
 import Skills from "./components/Sections/Skills";
 import About from "./components/Sections/About";
 import Contact from "./components/Sections/Contact";
+import Achievements from "./components/Sections/Achievements";
+import Projects from "./components/Sections/Projects";
 
 const Home = ({ isDark }) => (
-  // Tambahkan transisi di wrapper konten home
   <div className="animate-fade-in-up transition-all duration-500 ease-in-out">
     <Hero isDark={isDark} />
     <Skills isDark={isDark} />
@@ -72,8 +73,8 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home isDark={isDark} />} />
                     <Route path="/about" element={<About isDark={isDark} />} />
-                    <Route path="/achievements" element={<Placeholder title="Pencapaian" />} />
-                    <Route path="/projects" element={<Placeholder title="Proyek" />} />
+                    <Route path="/achievements" element={<Achievements title="Pencapaian" isDark={isDark} />} />
+                    <Route path="/projects" element={<Projects title="Proyek" isDark={isDark} />} />
                     <Route path="/dashboard" element={<Placeholder title="Dasbor" />} />
                     <Route path="/chat" element={<Placeholder title="Ruang Obrolan" />} />
                     <Route path="/contact" element={<Contact title="Kontak" isDark={isDark} />} />
