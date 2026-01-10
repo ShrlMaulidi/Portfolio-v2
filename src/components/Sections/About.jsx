@@ -1,42 +1,6 @@
 import { useState } from "react";
-import { profileData } from "../../data";
-
-const careerHistory = [
-  {
-    id: 1,
-    role: "Web Developer",
-    company: "Balai Besar Pelatihan Kesehatan Ciloto",
-    location: "Cianjur, Indonesia 🇮🇩",
-    logo: "/img/career/bbpk.jpg",
-    period: "Jul 2025 - Nov 2025",
-    duration: "5 Months",
-    type: "Internship",
-    work_mode: "Remote",
-    responsibilities: [
-      "Mengembangkan website menejemen tugas.",
-      "Melakukan optimasi query database MySql untuk meningkatkan performa backend.",
-      "Menggunakan teknologi React JS & Laravel 11",
-      "Menyusun laporan dan membuat E-Book Panduan Penggunaan."
-    ]
-  },
-  {
-    id: 2,
-    role: "Staff Administration",
-    company: "PT. Media Solusi Sukses",
-    location: "Karawang, Indonesia 🇮🇩",
-    logo: "/img/career/mss.png", 
-    period: "Mar 2025 - Now",
-    duration: "until now",
-    type: "Full Time",
-    work_mode: "Onsite",
-    responsibilities: [
-      "Mempersiapkan dan mengelola dokumen administrasi bisnis, termasuk Purchase Order (PO), Berita Acara, dan surat konfirmasi.",
-      "Bertanggung jawab atas siklus penagihan (billing) dengan menerbitkan dan memproses invoice pelanggan.",
-      "Mengelola administrasi database pelanggan serta melakukan rekapitulasi data dan absensi karyawan."
-    ]
-  },
-  
-];
+// 👇 Import careerHistory dari data
+import { profileData, educationData, careerHistory } from "../../data";
 
 // Komponen Card Karier (Internal Component)
 function CareerCard({ job, isDark }) {
@@ -49,7 +13,6 @@ function CareerCard({ job, isDark }) {
       <div className="flex gap-4 items-start">
         {/* Logo Perusahaan */}
         <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden ${isDark ? 'bg-white' : 'bg-gray-50 border border-gray-100'}`}>
-           {/* Fallback jika gambar error/tidak ada */}
            {job.logo ? (
              <img src={job.logo} alt={job.company} className="w-full h-full object-contain" onError={(e) => {e.target.style.display='none'; e.target.nextSibling.style.display='block'}} />
            ) : null}
@@ -114,7 +77,7 @@ export default function About({ isDark }) {
     <div className="animate-fade-in-up transition-colors duration-500 ease-in-out">
       
       {/* --- HEADER TENTANG --- */}
-      <div className="mb-8">
+      <div className="mb-6">
         <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
           Tentang
         </h1>
@@ -124,6 +87,7 @@ export default function About({ isDark }) {
       </div>
 
       <div className={`w-full border-t border-dashed my-8 transition-colors duration-500 ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
+ 
 
       {/* --- CONTENT PARAGRAPH --- */}
       <div className={`prose max-w-none text-base md:text-lg leading-relaxed space-y-6 transition-colors duration-500 ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
@@ -148,6 +112,7 @@ export default function About({ isDark }) {
                 Sahrul
             </span>
         </div>
+        
       </div>
 
       <div className={`w-full h-px my-12 transition-colors duration-500 ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
@@ -168,13 +133,88 @@ export default function About({ isDark }) {
             </div>
           </div>
 
-          {/* LIST CARD KARIER */}
+          {/* LIST CARD KARIER (Diambil dari Data) */}
           <div className="flex flex-col">
             {careerHistory.map((job) => (
                 <CareerCard key={job.id} job={job} isDark={isDark} />
             ))}
           </div>
+          <div className="flex flex-wrap gap-4 mb-0 mt-5">
+            <button className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border font-medium text-sm transition-all duration-300 hover:-translate-y-0.5
+                ${isDark 
+                    ? 'border-[#27272a] text-gray-300 hover:bg-[#27272a] hover:text-white' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black'}`}>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Unduh Portofolio
+            </button>
+
+            <a 
+                href="/CV/CV.pdf" // Path ke file CV di folder public
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border font-medium text-sm transition-all duration-300 hover:-translate-y-0.5
+                ${isDark 
+                    ? 'border-[#27272a] text-gray-300 hover:bg-[#27272a] hover:text-white' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black'}`}
+            >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Unduh CV
+            </a>
       </div>
+      </div>
+
+      {/* --- DIVIDER PEMISAH ANTARA KARIER DAN PENDIDIKAN (Baru) --- */}
+      <div className={`w-full border-t border-dashed my-12 transition-colors duration-500 ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
+
+      {/* --- SECTION PENDIDIKAN --- */}
+      <div>
+            <h2 className={`text-xl font-bold mb-8 flex items-center gap-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                 <span className="p-2 rounded-lg bg-green-500/10 text-green-500">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
+                </span>
+                Pendidikan
+            </h2>
+
+            <div className="grid grid-cols-1 gap-4">
+                {educationData.map((edu) => (
+                    <div key={edu.id} className={`p-6 rounded-2xl border transition-all duration-300 hover:shadow-lg flex items-start gap-5
+                        ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
+                        
+                        {/* Logo Kampus */}
+                        <div className={`w-16 h-16 rounded-xl flex items-center justify-center p-2 shrink-0 ${isDark ? 'bg-white' : 'bg-gray-50 border'}`}>
+                            {edu.logo ? (
+                                <img src={edu.logo} alt={edu.school} className="w-full h-full object-contain" />
+                            ) : (
+                                <span className="text-2xl">🎓</span>
+                            )}
+                        </div>
+
+                        {/* Detail Pendidikan */}
+                        <div className="flex-1">
+                            <h3 className={`text-lg font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                {edu.school}
+                            </h3>
+                            <p className={`text-sm md:text-base font-medium mb-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                                {edu.degree}
+                            </p>
+                            
+                            <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm ${isDark ? 'text-[#a1a1aa]' : 'text-gray-500'}`}>
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    {edu.year}
+                                </span>
+                                <span className="hidden sm:inline">•</span>
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    {edu.location}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+        </div>
 
     </div>
   );

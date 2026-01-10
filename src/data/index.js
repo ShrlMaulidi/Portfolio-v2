@@ -33,55 +33,52 @@ export const skillsData = [
   { name: "Word", icon: "/skill/word.png", color: "from-indigo-400 to-indigo-600" },
 ];
 
-export const careerData = [
+export const careerHistory = [
   {
     id: 1,
-    role: "Backend Golang Developer",
-    company: "Pt. Affan Technology Indonesia (Parto.id)",
-    location: "Jambi, Indonesia 🇮🇩",
-    period: "Jul 2025 - Sep 2025",
-    duration: "2 Months",
+    role: "Web Developer",
+    company: "Balai Besar Pelatihan Kesehatan Ciloto",
+    location: "Cianjur, Indonesia 🇮🇩",
+    logo: "/img/career/bbpk.jpg", // Pastikan file gambar ada di public/img/career/
+    period: "Jul 2025 - Nov 2025",
+    duration: "5 Months",
     type: "Internship",
-    mode: "Onsite",
-    logo: "/img/parto.png", // Pastikan ada gambar placeholder/logo di public/img
+    work_mode: "Remote",
     responsibilities: [
-      "Mengembangkan RESTful API menggunakan Golang (Gin Framework).",
-      "Mengoptimalkan query database PostgreSQL untuk performa tinggi.",
-      "Berkolaborasi dengan tim frontend untuk integrasi sistem."
+      "Mengembangkan website menejemen tugas.",
+      "Melakukan optimasi query database MySql untuk meningkatkan performa backend.",
+      "Menggunakan teknologi React JS & Laravel 11",
+      "Menyusun laporan dan membuat E-Book Panduan Penggunaan."
     ]
   },
   {
     id: 2,
-    role: "Frontend Web Developer",
-    company: "Pt. Eltran Indonesia",
-    location: "Bandung, Indonesia 🇮🇩",
-    period: "May 2025 - Nov 2025",
-    duration: "6 Months",
-    type: "Internship",
-    mode: "Remote",
-    logo: "/img/len.png",
+    role: "Staff Administration",
+    company: "PT. Media Solusi Sukses",
+    location: "Karawang, Indonesia 🇮🇩",
+    logo: "/img/career/mss.png", 
+    period: "Mar 2025 - Now",
+    duration: "until now",
+    type: "Full Time",
+    work_mode: "Onsite",
     responsibilities: [
-      "Developed a responsive and interactive landing page using Next.js to promote company services and solutions.",
-      "Ensured SEO optimization and fast performance by leveraging Next.js features such as static site generation.",
-      "Collaborated with design and marketing teams to align web presence with brand identity."
+      "Mempersiapkan dan mengelola dokumen administrasi bisnis, termasuk Purchase Order (PO), Berita Acara, dan surat konfirmasi.",
+      "Bertanggung jawab atas siklus penagihan (billing) dengan menerbitkan dan memproses invoice pelanggan.",
+      "Mengelola administrasi database pelanggan serta melakukan rekapitulasi data dan absensi karyawan."
     ]
   },
+];
+
+export const educationData = [
   {
-    id: 3,
-    role: "Head of Technology in the Research and Technology Division",
-    company: "Himpunan Mahasiswa Sistem Informasi Universitas Jambi (HIMASI UNJA)",
-    location: "Jambi, Indonesia 🇮🇩",
-    period: "Dec 2024 - Present",
-    duration: "1 year 1 Month",
-    type: "Part-time",
-    mode: "Onsite",
-    logo: "/img/himasi.png",
-    responsibilities: [
-      "Memimpin divisi teknologi dalam pengembangan website organisasi.",
-      "Mengadakan workshop dan pelatihan teknologi untuk mahasiswa.",
-      "Mengelola infrastruktur IT organisasi."
-    ]
-  }
+    id: 1,
+    school: "Horizon University Indonesia",
+    degree: "S1 Informatika (Bachelor's Degree)",
+    year: "2022 - 2026",
+    location: "Karawang, Indonesia 🇮🇩",
+    logo: "/img/career/horizon.jpeg" // Ganti dengan logo kampus kamu
+  },
+  // Tambahkan pendidikan lain jika ada (SMA/SMK)
 ];
 
 export const achievementsData = [
@@ -161,11 +158,65 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "Sistem Presensi Internal",
-    desc: "Sistem absensi pegawai berbasis lokasi (GPS) dan foto selfie untuk instansi pemerintahan.",
+    title: "Sistem Presensi Siswa SMK",
+    desc: "Sistem absensi siswa berbasis lokasi (GPS) dan foto selfie untuk SMKN 3 Cikampek.",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
-    tech: ["Laravel", "Vue", "Tailwind"],
+    tech: ["Laravel", "PHP", "Tailwind"],
     link: "#",
     featured: false
+  }
+];
+
+// Sosial Media
+export const socialMediaData = [
+  {
+    id: 1,
+    title: 'Tetap Terhubung',
+    desc: 'Hubungi saya via email untuk pertanyaan atau kolaborasi.',
+    btnText: 'Pergi ke Gmail',
+    icon: 'Gmail', // Key string untuk mapping icon nanti
+    url: 'mailto:sahrulmaulidi294@gmail.com', // Link Email
+    color: 'bg-gradient-to-br from-[#d94838] to-[#99251a]', 
+    span: 'md:col-span-2'
+  },
+  {
+    id: 2,
+    title: 'Ikuti Perjalanan Saya',
+    desc: 'Ikuti perjalanan kreatif saya.',
+    btnText: 'Pergi ke Instagram',
+    icon: 'Instagram',
+    url: 'https://www.instagram.com/_shrlmaulidi29',
+    color: 'bg-gradient-to-br from-[#8a3ab9] via-[#e95950] to-[#fccc63]',
+    span: 'md:col-span-1'
+  },
+  {
+    id: 3,
+    title: 'Mari Terhubung',
+    desc: 'Terhubung secara profesional dengan saya.',
+    btnText: 'Pergi ke Linkedin',
+    icon: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/sahrulmaulidi/',
+    color: 'bg-gradient-to-br from-[#0077b5] to-[#004182]',
+    span: 'md:col-span-1'
+  },
+  {
+    id: 4,
+    title: 'Ikut Seru-seruan',
+    desc: 'Tonton konten yang seru dan menarik.',
+    btnText: 'Pergi ke Tiktok',
+    icon: 'TikTok',
+    url: 'https://www.tiktok.com/@shrlmaulidi?_r=1&_t=ZS-92xVIcETpXI',
+    color: 'bg-gradient-to-br from-[#1f1f1f] to-[#000000]',
+    span: 'md:col-span-1'
+  },
+  {
+    id: 5,
+    title: 'Jelajahi Kode',
+    desc: 'Lihat karya open-source saya.',
+    btnText: 'Pergi ke Github',
+    icon: 'GitHub',
+    url: 'https://github.com/ShrlMaulidi',
+    color: 'bg-gradient-to-br from-[#171515] to-[#0d1117]',
+    span: 'md:col-span-1'
   }
 ];
