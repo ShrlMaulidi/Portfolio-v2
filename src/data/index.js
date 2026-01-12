@@ -13,7 +13,7 @@ export const navItems = [
   { path: "/achievements", label: "Pencapaian", iconPath: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
   { path: "/projects", label: "Proyek", iconPath: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" },
   { path: "/dashboard", label: "Dasbor", iconPath: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" },
-  { path: "/chat", label: "Ruang Obrolan", iconPath: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" },
+  { path: "/gallery", label: "Gallery", iconPath: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" },
   { path: "/contact", label: "Kontak", iconPath: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
 ];
 
@@ -67,6 +67,7 @@ export const careerHistory = [
       "Mengelola administrasi database pelanggan serta melakukan rekapitulasi data dan absensi karyawan."
     ]
   },
+  
 ];
 
 export const educationData = [
@@ -87,14 +88,13 @@ export const achievementsData = [
     title: "Alibaba Cloud Certified Associate",
     issuer: "Alibaba Academy",
     date: "2025 - 2027",
-    // Ganti URL ini dengan gambar sertifikat asli Anda nanti
     image: "/achievement/alibaba.png" 
   },
   {
     id: 2,
     title: "Sertifikat Kewirausahaan Digital",
     issuer: "Digitalent",
-    date: "Agustur 2023",
+    date: "Agustus 2023",
     image: "/achievement/dea.jpg"
   },
   {
@@ -131,7 +131,7 @@ export const achievementsData = [
 export const projectsData = [
   {
     id: 1,
-    title: "myportfolio-shrlmaulidi",
+    title: "myportfolio-shrlmaulidi V2",
     desc: "Personal website & portfolio, built from scratch using React JS, and Tailwind CSS. Menampilkan profil, keahlian, dan portofolio secara interaktif.",
     image: "/proyek/portfolio.png", // Ganti dengan screenshot website Anda
     tech: ["Tailwind", "React", "JS"], // Pastikan nama ini cocok dengan nama di skillsData atau siapkan iconnya
@@ -152,12 +152,21 @@ export const projectsData = [
     title: "Sibas (Sistem Pelaporan Bank Sampah)",
     desc: "Website untuk melaporkan Sampah untuk di angkut.",
     image: "/proyek/websibas.png",
-    tech: ["PHP", "Mysql", "CSS", "HTML", "JS"],
+    tech: ["PHP", "Mysql", "CSS", "HTML", "JS", "Bootstrap"],
     link: "https://sibas-landing.vercel.app",
     featured: false
   },
   {
     id: 4,
+    title: "My Portfolio V1",
+    desc: "Personal website & portfolio, built from scratch using HTML, and Tailwind CSS. Menampilkan profil, keahlian, dan portofolio secara interaktif.",
+    image: "/proyek/portfoliov1.png",
+    tech: ["HTML", "JS", "Tailwind"],
+    link: "#",
+    featured: false
+  },
+  {
+    id: 5,
     title: "Sistem Presensi Siswa SMK",
     desc: "Sistem absensi siswa berbasis lokasi (GPS) dan foto selfie untuk SMKN 3 Cikampek.",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
@@ -220,3 +229,49 @@ export const socialMediaData = [
     span: 'md:col-span-1'
   }
 ];
+
+
+// ... (Kode profileData, navItems, skillsData, achievementsData, projectsData, educationData, careerHistory, socialMediaData sebelumnya TETAP ADA) ...
+
+// 👇 TAMBAHKAN DATA DASBOR DI SINI 👇
+export const dashboardData = {
+  // 1. Availability Status (Status Ketersediaan)
+  availability: {
+    isAvailable: true, // Ubah ke false jika sedang tidak mencari kerja
+    status: "Open to Work",
+    description: "Siap untuk berkontribusi pada proyek inovatif atau posisi Full-time.",
+    link: "/contact" // Mengarah ke halaman kontak
+  },
+
+  // 2. Statistik Angka
+  stats: [
+    { label: 'Total Komit (2025)', value: '1,240', icon: '🔥', color: 'bg-orange-500/10 text-orange-500' },
+    { label: 'Jam Koding', value: '3,500+', icon: '⚡', color: 'bg-yellow-500/10 text-yellow-500' },
+    { label: 'Project Selesai', value: '12', icon: '🚀', color: 'bg-green-500/10 text-green-500' },
+    { label: 'Kopi Diminum', value: '∞', icon: '☕', color: 'bg-blue-500/10 text-blue-500' },
+  ],
+
+  // 3. Bahasa Pemrograman
+  topLanguages: [
+    { name: 'JavaScript / React', percent: 60, color: 'bg-yellow-400' },
+    { name: 'PHP / Laravel', percent: 25, color: 'bg-red-500' },
+    { name: 'CSS / Tailwind', percent: 15, color: 'bg-cyan-400' },
+  ],
+
+  // 4. Tools & Software
+  tools: [
+    { name: 'VS Code', icon: '💻', desc: 'Editor Utama' },
+    { name: 'Figma', icon: '🎨', desc: 'Desain UI' },
+    { name: 'Postman', icon: '🚀', desc: 'API Testing' },
+    { name: 'Terminal', icon: '⌨️', desc: 'Git Bash' },
+  ],
+
+  // 5. Learning Roadmap (Target Belajar)
+  learningGoals: [
+    { name: 'React JS', status: 'In Progress', color: 'text-yellow-500' },
+    { name: 'Laravel', status: 'Done', color: 'text-green-500' },
+    { name: 'Next JS', status: 'Next', color: 'text-gray-500' },
+  ]
+};
+
+
