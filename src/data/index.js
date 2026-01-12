@@ -141,7 +141,7 @@ export const projectsData = [
   {
     id: 2,
     title: "CilotoTrack",
-    desc: "Website untuk pemantauan tugas karyawan.",
+    desc: "CilotoTrack adalah sebuah website berbasis web yang digunakan untuk memantau, mengelola, dan mengorganisir tugas karyawan secara terpusat. Website ini membantu perusahaan dalam mengatur pembagian tugas, memantau progres pekerjaan secara real-time, serta meningkatkan produktivitas dan koordinasi antar tim dengan tampilan yang modern dan mudah digunakan.",
     image: "/proyek/bbpk.png",
     tech: ["React", "PHP", "Mysql", "Laravel", "Tailwind", "JS"],
     link: "https://cilotrack.bbpkciloto.or.id/",
@@ -150,7 +150,7 @@ export const projectsData = [
   {
     id: 3,
     title: "Sibas (Sistem Pelaporan Bank Sampah)",
-    desc: "Website untuk melaporkan Sampah untuk di angkut.",
+    desc: "Sibas adalah sebuah website sistem pelaporan bank sampah yang digunakan untuk memudahkan masyarakat dalam melaporkan sampah yang siap untuk diangkut.",
     image: "/proyek/websibas.png",
     tech: ["PHP", "Mysql", "CSS", "HTML", "JS", "Bootstrap"],
     link: "https://sibas-landing.vercel.app",
