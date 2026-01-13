@@ -8,6 +8,7 @@ import Contact from "./components/Sections/Contact";
 import Achievements from "./components/Sections/Achievements";
 import Projects from "./components/Sections/Projects";
 import Dashboard from "./components/Sections/Dashboard";
+import Gallery from "./components/Sections/Gallery";
 
 const Home = ({ isDark }) => (
   <div className="animate-fade-in-up transition-all duration-500 ease-in-out">
@@ -77,7 +78,7 @@ export default function App() {
                     <Route path="/achievements" element={<Achievements title="Pencapaian" isDark={isDark} />} />
                     <Route path="/projects" element={<Projects title="Proyek" isDark={isDark} />} />
                     <Route path="/dashboard" element={<Dashboard title="Dasbor" isDark={isDark} />} />
-                    <Route path="/gallery" element={<Placeholder title="Gallery" />} />
+                    <Route path="/gallery" element={<Gallery title="Gallery" isDark={isDark} />} />
                     <Route path="/contact" element={<Contact title="Kontak" isDark={isDark} />} />
                 </Routes>
 

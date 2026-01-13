@@ -23,10 +23,7 @@ export default function Hero({ isDark }) {
         </div>
 
         <p className={`leading-relaxed text-[15px] md:text-base max-w-3xl transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-        Seorang mahasiswa Informatika yang memiliki minat besar dalam dunia teknologi, khususnya desain dan pengembangan perangkat lunak. 
-            Saya gemar mengeksplorasi desain antarmuka <span className={`font-semibold transition-colors duration-500 ${isDark ? 'text-white' : 'text-black'}`}>(UI/UX)</span> dan coding untuk menciptakan solusi kreatif yang fungsional. 
-            Saya percaya teknologi adalah alat untuk inovasi, dan saya terus mengasah keterampilan untuk berkontribusi di industri IT. 
-            Mari terhubung untuk berdiskusi atau berkolaborasi!
+            Seorang mahasiswa Informatika yang memiliki minat besar dalam dunia teknologi, khususnya desain dan pengembangan perangkat lunak. Saya gemar mengeksplorasi desain antarmuka <span className={`font-semibold transition-colors duration-500 ${isDark ? 'text-white' : 'text-black'}`}>(UI/UX)</span>  dan <span className={`font-semibold transition-colors duration-500 ${isDark ? 'text-white' : 'text-black'}`}> Coding</span>  untuk menciptakan solusi kreatif yang fungsional. Saya percaya teknologi adalah alat untuk inovasi, dan saya terus mengasah keterampilan untuk berkontribusi di industri IT. Mari terhubung untuk berdiskusi atau berkolaborasi!
         </p>
 
         <div className={`h-px w-full my-8 transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>

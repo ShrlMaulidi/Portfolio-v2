@@ -162,7 +162,7 @@ export const projectsData = [
     desc: "Personal website & portfolio, built from scratch using HTML, and Tailwind CSS. Menampilkan profil, keahlian, dan portofolio secara interaktif.",
     image: "/proyek/portfoliov1.png",
     tech: ["HTML", "JS", "Tailwind"],
-    link: "#",
+    link: "https://shrlmaulidi29.netlify.app",
     featured: false
   },
   {
@@ -275,3 +275,41 @@ export const dashboardData = {
 };
 
 
+export const galleryPhotos = [
+  {
+    id: 1,
+    src: "/gallery/02.png",
+    category: "Kegiatan",
+    caption: "My Editor"
+  },
+  {
+    id: 2,
+    src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1740&auto=format&fit=crop",
+    category: "Workspace",
+    caption: "Setup Coding Malam Hari 🌙"
+  },
+  {
+    id: 3,
+    src: "/gallery/logo v2.png",
+    category: "Kegiatan",
+    caption: "My Logo Personal Branding"
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1874&auto=format&fit=crop",
+    category: "Travel",
+    caption: "Healing sejenak ke Alam 🌲"
+  },
+  {
+    id: 5,
+    src: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=1740&auto=format&fit=crop",
+    category: "Sertifikat",
+    caption: "Lulus Sertifikasi React Developer"
+  },
+  {
+    id: 6,
+    src: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=1740&auto=format&fit=crop",
+    category: "Workspace",
+    caption: "Menulis Kode Backend Laravel"
+  },
+];

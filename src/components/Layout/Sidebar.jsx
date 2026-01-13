@@ -94,14 +94,19 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
 
               {/* Bottom Actions */}
               <div className="mt-6">
-                  <button className={`w-full py-3 border font-bold text-sm rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg
-                    ${isDark 
-                        ? 'border-[#4ade80] text-[#4ade80] bg-[#4ade80]/5 hover:bg-[#4ade80]/10' 
-                        : 'border-[#16a34a] text-[#16a34a] bg-[#16a34a]/5 hover:bg-[#16a34a]/10'
-                    }`}>
-                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    Ayo Terhubung 😊
-                  </button>
+              <a 
+                  href="https://wa.me/6285212867574?text=Halo%20Sahrul%2C%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full py-3 border font-bold text-sm rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg cursor-pointer
+                      ${isDark 
+                          ? 'border-[#4ade80] text-[#4ade80] bg-[#4ade80]/5 hover:bg-[#4ade80]/10' 
+                          : 'border-[#16a34a] text-[#16a34a] bg-[#16a34a]/5 hover:bg-[#16a34a]/10'
+                      }`}
+                >
+                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                  Ayo Terhubung 😊
+                </a>
                   
                   <div className={`h-px w-full my-4 transition-colors duration-500 ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
 
