@@ -1,7 +1,6 @@
 export const profileData = {
   name: "Sahrul Maulidi",
   username: "@shrlmaulidi",
-  // Ganti URL ini dengan foto profil Anda yang sebenarnya
   img: "/img/profile.jpeg",
   status: "Based in Karawang, Indonesia 🇮🇩", 
   job: "Onsite"

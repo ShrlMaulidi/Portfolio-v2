@@ -56,10 +56,16 @@ export default function App() {
         
         {/* Mobile Header */}
         <div className={`md:hidden flex items-center justify-between p-4 border-b sticky top-0 z-40 transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#0c0c0c] border-[#27272a]' : 'bg-white border-gray-200'}`}>
-            <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-green-500 to-emerald-700 flex items-center justify-center text-white font-bold text-sm">SB</div>
-                <span className={`font-bold text-base transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>Sahrul Maulidi</span>
-            </div>
+        <div className="flex items-center gap-2">
+              <img 
+                  src="/img/profile.jpeg" 
+                  alt="Sahrul Maulidi" 
+                  className="w-8 h-8 rounded-full object-cover" 
+              />
+              <span className={`font-bold text-base transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  Sahrul Maulidi
+              </span>
+          </div>
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={`p-2 transition-colors duration-500 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-black'}`}>
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
