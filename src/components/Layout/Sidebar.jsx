@@ -71,7 +71,11 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                 {navItems.map((item) => {
                   const active = isActive(item.path);
                   return (
-                    <Link to={item.path} key={item.path}
+                    <Link 
+                        to={item.path} 
+                        key={item.path}
+                        // 👇 TAMBAHAN: Tutup menu saat link diklik
+                        onClick={() => setMobileMenuOpen(false)} 
                         className={`group flex items-center justify-between px-4 py-2.5 rounded-lg transition-all duration-300 ease-in-out hover:scale-[1.02] hover:-translate-y-0.5
                         /* Hover Shadow & Effect */
                         hover:shadow-md
@@ -98,6 +102,8 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                   href="https://wa.me/6285212867574?text=Halo%20Sahrul%2C%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi."
                   target="_blank"
                   rel="noopener noreferrer"
+                  // 👇 TAMBAHAN (Opsional): Tutup menu juga saat tombol WA diklik
+                  onClick={() => setMobileMenuOpen(false)}
                   className={`w-full py-3 border font-bold text-sm rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg cursor-pointer
                       ${isDark 
                           ? 'border-[#4ade80] text-[#4ade80] bg-[#4ade80]/5 hover:bg-[#4ade80]/10' 
