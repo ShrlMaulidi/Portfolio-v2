@@ -78,7 +78,6 @@ export const educationData = [
     location: "Karawang, Indonesia 🇮🇩",
     logo: "/img/career/horizon.jpeg" // Ganti dengan logo kampus kamu
   },
-  // Tambahkan pendidikan lain jika ada (SMA/SMK)
 ];
 
 export const achievementsData = [
@@ -166,9 +165,9 @@ export const projectsData = [
   },
   {
     id: 5,
-    title: "Sistem Presensi Siswa SMK",
-    desc: "Sistem absensi siswa berbasis lokasi (GPS) dan foto selfie untuk SMKN 3 Cikampek.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
+    title: "Sistem Presensi Siswa SMA",
+    desc: "Sistem absensi siswa berbasis lokasi (GPS) dan foto selfie untuk SMAN 3 Cikampek.",
+    image: "/proyek/sman.jpg",
     tech: ["Laravel", "PHP", "Tailwind"],
     link: "#",
     featured: false
@@ -230,9 +229,6 @@ export const socialMediaData = [
 ];
 
 
-// ... (Kode profileData, navItems, skillsData, achievementsData, projectsData, educationData, careerHistory, socialMediaData sebelumnya TETAP ADA) ...
-
-// 👇 TAMBAHKAN DATA DASBOR DI SINI 👇
 export const dashboardData = {
   // 1. Availability Status (Status Ketersediaan)
   availability: {

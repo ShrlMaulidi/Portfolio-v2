@@ -48,13 +48,7 @@ export default function App() {
 
   return (
     <Router>
-      {/* WRAPPER UTAMA:
-         - max-w-7xl & mx-auto: Layout Contained (Tengah).
-         - transition-all duration-500 ease-in-out: KUNCI SMOOTH MODE untuk margin kiri-kanan.
-      */}
       <div className="w-full max-w-7xl min-h-screen flex flex-col md:flex-row mx-auto relative antialiased selection:bg-green-500 selection:text-black py-0 md:py-8 px-0 md:px-8 gap-0 md:gap-12 transition-all duration-500 ease-in-out">
-        
-        {/* Mobile Header */}
         <div className={`md:hidden flex items-center justify-between p-4 border-b sticky top-0 z-40 transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#0c0c0c] border-[#27272a]' : 'bg-white border-gray-200'}`}>
         <div className="flex items-center gap-2">
               <img 

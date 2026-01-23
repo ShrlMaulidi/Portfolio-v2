@@ -5,7 +5,6 @@ import { dashboardData } from '../../data';
 export default function Dashboard({ isDark }) {
   const { availability, topLanguages, tools, learningGoals } = dashboardData;
   
-  // State untuk menyimpan data Real dari GitHub
   const [githubData, setGithubData] = useState({
     public_repos: 0,
     followers: 0,
@@ -14,9 +13,7 @@ export default function Dashboard({ isDark }) {
     loading: true
   });
 
-  // --- FETCH DATA DARI GITHUB API ---
   useEffect(() => {
-    // Ganti 'ShrlMaulidi' dengan username GitHub kamu jika berbeda
     const USERNAME = 'ShrlMaulidi'; 
     
     fetch(`https://api.github.com/users/${USERNAME}`)
@@ -36,7 +33,6 @@ export default function Dashboard({ isDark }) {
       });
   }, []);
 
-  // Data Statistik Gabungan (Manual + Real API)
   const realStats = [
     { 
       label: 'Public Repos', 
@@ -58,7 +54,7 @@ export default function Dashboard({ isDark }) {
     },
     { 
       label: 'Total Project', 
-      value: '12+', // Data manual (karena project tidak selalu di github)
+      value: '12+',
       icon: '🚀', 
       color: 'bg-green-500/10 text-green-500' 
     },
@@ -66,8 +62,6 @@ export default function Dashboard({ isDark }) {
 
   return (
     <div className="mb-10 animate-fade-in-up transition-colors duration-500 ease-in-out">
-        
-        {/* === HEADER === */}
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
                 Dasbor
@@ -79,10 +73,7 @@ export default function Dashboard({ isDark }) {
 
         <div className={`h-px w-full my-8 border-dashed border-b transition-colors duration-500 ease-in-out ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
 
-        {/* === BENTO GRID LAYOUT === */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            {/* 1. AVAILABILITY STATUS CARD */}
             <div className={`md:col-span-1 p-6 rounded-2xl border flex flex-col justify-between relative overflow-hidden
                 ${isDark 
                     ? 'bg-gradient-to-br from-emerald-900/20 to-[#18181b] border-emerald-500/30' 
@@ -114,7 +105,6 @@ export default function Dashboard({ isDark }) {
                 </Link>
             </div>
 
-            {/* 2. REAL STATS CARDS (DATA DARI API) */}
             <div className="md:col-span-2 grid grid-cols-2 gap-4">
                 {realStats.map((stat, idx) => (
                     <div key={idx} className={`p-5 rounded-2xl border flex flex-col justify-center gap-2 transition-all hover:-translate-y-1
@@ -130,7 +120,6 @@ export default function Dashboard({ isDark }) {
                 ))}
             </div>
 
-            {/* 3. BAHASA PEMROGRAMAN */}
             <div className={`md:col-span-2 p-6 rounded-2xl border flex flex-col justify-between
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 <h3 className={`text-lg font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -170,7 +159,6 @@ export default function Dashboard({ isDark }) {
                 </div>
             </div>
 
-            {/* 5. GITHUB GRAPH (REAL DARI API) */}
             <div className={`md:col-span-2 p-6 rounded-2xl border overflow-hidden
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 
@@ -178,19 +166,13 @@ export default function Dashboard({ isDark }) {
                     <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         Kontribusi GitHub (Real-time)
                     </h3>
-                    {/* Link ke profil asli */}
                     <a href="https://github.com/ShrlMaulidi" target="_blank" rel="noreferrer" className="text-xs text-green-500 font-mono bg-green-500/10 px-2 py-1 rounded hover:bg-green-500/20 transition">
                         @ShrlMaulidi
                     </a>
                 </div>
 
-                {/* GAMBAR GRAFIK DARI GHCHART */}
                 <div className="w-full overflow-x-auto pb-2 scrollbar-hide">
                     <div className="min-w-[600px]">
-                        {/* Warna Grafik: 
-                           22c55e = Kode warna Hex untuk Tailwind Green-500.
-                           Ganti 'ShrlMaulidi' dengan username kamu jika perlu.
-                        */}
                         <img 
                             src={`https://ghchart.rshah.org/22c55e/ShrlMaulidi`} 
                             alt="Github Chart" 
@@ -204,7 +186,6 @@ export default function Dashboard({ isDark }) {
                 </p>
             </div>
 
-            {/* 6. LEARNING ROADMAP */}
             <div className={`md:col-span-1 p-6 rounded-2xl border
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>

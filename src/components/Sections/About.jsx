@@ -1,8 +1,6 @@
 import { useState } from "react";
-// 👇 Import careerHistory dari data
 import { profileData, educationData, careerHistory } from "../../data";
 
-// Komponen Card Karier (Internal Component)
 function CareerCard({ job, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -75,8 +73,7 @@ function CareerCard({ job, isDark }) {
 export default function About({ isDark }) {
   return (
     <div className="animate-fade-in-up transition-colors duration-500 ease-in-out">
-      
-      {/* --- HEADER TENTANG --- */}
+    
       <div className="mb-6">
         <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
           Tentang
@@ -87,9 +84,6 @@ export default function About({ isDark }) {
       </div>
 
       <div className={`w-full border-t border-dashed my-8 transition-colors duration-500 ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
- 
-
-      {/* --- CONTENT PARAGRAPH --- */}
       <div className={`prose max-w-none text-base md:text-lg leading-relaxed space-y-6 transition-colors duration-500 ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
         
         <p>
@@ -117,7 +111,7 @@ export default function About({ isDark }) {
 
       <div className={`w-full h-px my-12 transition-colors duration-500 ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
 
-      {/* --- SECTION KARIER --- */}
+
       <div className="flex flex-col">
           <div className="flex items-center gap-3 mb-6">
             <svg className={`w-6 h-6 transition-colors duration-500 ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -163,10 +157,8 @@ export default function About({ isDark }) {
       </div>
       </div>
 
-      {/* --- DIVIDER PEMISAH ANTARA KARIER DAN PENDIDIKAN (Baru) --- */}
       <div className={`w-full border-t border-dashed my-12 transition-colors duration-500 ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
 
-      {/* --- SECTION PENDIDIKAN --- */}
       <div>
             <h2 className={`text-xl font-bold mb-8 flex items-center gap-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                  <span className="p-2 rounded-lg bg-green-500/10 text-green-500">

@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { socialMediaData } from '../../data';
-import emailjs from '@emailjs/browser'; // Import EmailJS
+import emailjs from '@emailjs/browser'; 
 
-// --- ICONS (TIDAK BERUBAH) ---
 const Icons = {
   Gmail: ({ className }) => (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -35,12 +34,10 @@ export default function Contact({ isDark }) {
   const form = useRef();
   const [isSending, setIsSending] = useState(false);
 
-  // --- LOGIKA PENGIRIMAN EMAIL ---
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSending(true);
 
-    // GANTI ID DI BAWAH INI DENGAN ID DARI AKUN EMAILJS ANDA
     const SERVICE_ID = 'service_sv8kxhg'; 
     const TEMPLATE_ID = 'template_rhvri0j';
     const PUBLIC_KEY = 'qF4MYuOH79AbrVRir';
@@ -50,7 +47,7 @@ export default function Contact({ isDark }) {
           console.log(result.text);
           alert('Pesan berhasil terkirim! Terima kasih.');
           setIsSending(false);
-          e.target.reset(); // Reset form setelah sukses
+          e.target.reset();
       }, (error) => {
           console.log(error.text);
           alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi via Email langsung.');
@@ -144,7 +141,6 @@ export default function Contact({ isDark }) {
             })}
         </div>
 
-        {/* --- FORMULIR KONTAK --- */}
         <div className={`h-px w-full my-10 border-dashed transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
 
         <div className="mb-6">
@@ -152,10 +148,8 @@ export default function Contact({ isDark }) {
                 Atau kirim saya pesan
             </h2>
 
-            {/* FORM DIHUBUNGKAN KE REF dan ONSUBMIT */}
             <form ref={form} onSubmit={sendEmail} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Tambahkan attribute name="user_name" agar terbaca EmailJS */}
                     <input 
                         type="text" 
                         name="user_name" 
@@ -166,8 +160,6 @@ export default function Contact({ isDark }) {
                             ? 'bg-[#18181b] border-[#27272a] text-white placeholder-gray-500 focus:border-gray-500' 
                             : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-gray-400'}`}
                     />
-                    
-                    {/* Tambahkan attribute name="user_email" agar terbaca EmailJS */}
                     <input 
                         type="email" 
                         name="user_email" 
@@ -179,8 +171,6 @@ export default function Contact({ isDark }) {
                             : 'bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-gray-400'}`}
                     />
                 </div>
-
-                {/* Tambahkan attribute name="message" agar terbaca EmailJS */}
                 <textarea 
                     name="message" 
                     rows="4" 

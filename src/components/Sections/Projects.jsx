@@ -20,7 +20,6 @@ export default function Projects({ isDark }) {
 
         <div className={`h-px w-full my-8 border-dashed border-b transition-colors duration-500 ease-in-out ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
 
-        {/* === PROJECTS GRID === */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projectsData.map((project) => (
                 <div 

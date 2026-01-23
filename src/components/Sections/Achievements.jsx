@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { achievementsData } from '../../data'; // 👇 IMPORT DARI FILE DATA
+import { motion, AnimatePresence } from 'framer-motion';
+import { achievementsData } from '../../data';
 
 export default function Achievements({ isDark }) {
   const [search, setSearch] = useState('');
+  const [selectedCert, setSelectedCert] = useState(null);
 
-  // Filter Data dari Import
   const filteredData = achievementsData.filter(item =>
     item.title.toLowerCase().includes(search.toLowerCase()) ||
     item.issuer.toLowerCase().includes(search.toLowerCase())
@@ -12,6 +13,8 @@ export default function Achievements({ isDark }) {
 
   return (
     <div className="mb-10 animate-fade-in-up transition-colors duration-500 ease-in-out">
+        
+        {/* Header Section */}
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
                 Pencapaian
@@ -21,9 +24,9 @@ export default function Achievements({ isDark }) {
             </p>
         </div>
         <div className={`h-px w-full my-8 border-dashed border-b transition-colors duration-500 ease-in-out ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
+        
+        {/* Search & Filter */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-            
-            {/* Search Bar */}
             <div className="relative w-full md:w-1/3">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className={`h-5 w-5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -40,7 +43,6 @@ export default function Achievements({ isDark }) {
                 />
             </div>
 
-            {/* Filter Dropdown (Visual Only) */}
             <div className="relative w-full md:w-auto">
                 <button className={`flex items-center justify-between w-full md:w-64 px-4 py-2.5 rounded-lg border text-sm transition-colors duration-300
                     ${isDark 
@@ -52,18 +54,19 @@ export default function Achievements({ isDark }) {
             </div>
         </div>
 
-        {/* Total Count */}
         <div className={`text-sm mb-8 font-medium ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
             Total: {filteredData.length}
         </div>
 
-        {/* === GRID CERTIFICATES === */}
+        {/* Grid Certificates */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredData.map((item) => (
-                <div key={item.id} className={`group flex flex-col rounded-xl overflow-hidden border transition-all duration-300 hover:shadow-lg hover:-translate-y-1
-                    ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200 shadow-sm'}`}>
-                    
-                    {/* Image Container */}
+                <div 
+                    key={item.id} 
+                    onClick={() => setSelectedCert(item)}
+                    className={`group flex flex-col rounded-xl overflow-hidden border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer
+                    ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200 shadow-sm'}`}
+                >
                     <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
                         <img 
                             src={item.image} 
@@ -73,7 +76,6 @@ export default function Achievements({ isDark }) {
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
                     </div>
 
-                    {/* Content Container */}
                     <div className="p-5 flex flex-col flex-1">
                         <h3 className={`text-lg font-bold mb-2 line-clamp-2 leading-snug transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                             {item.title}
@@ -93,6 +95,72 @@ export default function Achievements({ isDark }) {
                 </div>
             ))}
         </div>
+
+        <AnimatePresence>
+            {selectedCert && (
+                <motion.div 
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setSelectedCert(null)}
+                >
+                    <motion.div 
+                        className={`relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row ${isDark ? 'bg-[#18181b]' : 'bg-white'}`}
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                    >
+                        {/* Close Button */}
+                        <button 
+                            onClick={() => setSelectedCert(null)}
+                            className={`absolute top-4 right-4 z-10 p-2 rounded-full transition-colors ${isDark ? 'bg-black/50 text-white hover:bg-black/70' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+
+                        {/* Left: Image */}
+                        <div className="w-full md:w-2/3 bg-gray-100 flex items-center justify-center p-4 md:p-8">
+                            <motion.img 
+                                layoutId={`img-${selectedCert.id}`}
+                                src={selectedCert.image} 
+                                alt={selectedCert.title} 
+                                className="max-w-full max-h-[60vh] object-contain shadow-lg rounded"
+                            />
+                        </div>
+
+                        {/* Right: Details */}
+                        <div className={`w-full md:w-1/3 p-6 md:p-8 flex flex-col ${isDark ? 'bg-[#121212] text-white' : 'bg-white text-gray-900'}`}>
+                            <h3 className="text-xl md:text-2xl font-bold mb-2 leading-tight">
+                                {selectedCert.title}
+                            </h3>
+                            <p className={`text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                                {selectedCert.issuer}
+                            </p>
+
+                            <div className="space-y-4">
+                                <div>
+                                    <p className={`text-xs uppercase tracking-wider mb-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>CREDENTIAL ID</p>
+                                    <p className="text-sm font-medium">{selectedCert.credentialId || '-'}</p>
+                                </div>
+                                
+                                <div>
+                                    <p className={`text-xs uppercase tracking-wider mb-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>TYPE</p>
+                                    <p className="text-sm font-medium">Certificate / Course</p>
+                                </div>
+
+                                <div>
+                                    <p className={`text-xs uppercase tracking-wider mb-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>ISSUE DATE</p>
+                                    <p className="text-sm font-medium">{selectedCert.date}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
 
     </div>
   );

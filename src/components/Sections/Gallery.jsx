@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { galleryPhotos } from '../../data'; // Import data foto
+import { galleryPhotos } from '../../data';
 
 export default function Gallery({ isDark }) {
   const [selectedCategory, setSelectedCategory] = useState('Semua');
-  const [selectedImage, setSelectedImage] = useState(null); // Untuk Modal Lightbox
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  // Ambil daftar kategori unik dari data
   const categories = ['Semua', ...new Set(galleryPhotos.map(photo => photo.category))];
 
-  // Filter foto berdasarkan kategori
   const filteredPhotos = selectedCategory === 'Semua' 
     ? galleryPhotos 
     : galleryPhotos.filter(photo => photo.category === selectedCategory);
@@ -16,7 +14,6 @@ export default function Gallery({ isDark }) {
   return (
     <div className="mb-10 animate-fade-in-up transition-colors duration-500 ease-in-out">
         
-        {/* === HEADER === */}
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
                 Galeri
@@ -25,10 +22,8 @@ export default function Gallery({ isDark }) {
                 Koleksi momen, kegiatan, dan kenangan visual saya.
             </p>
         </div>
-
         <div className={`h-px w-full my-8 border-dashed border-b transition-colors duration-500 ease-in-out ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
 
-        {/* === FILTER BUTTONS === */}
         <div className="flex flex-wrap gap-2 mb-8">
             {categories.map((cat, idx) => (
                 <button
@@ -45,7 +40,6 @@ export default function Gallery({ isDark }) {
             ))}
         </div>
 
-        {/* === PHOTO GRID (MASONRY STYLE) === */}
         <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
             {filteredPhotos.map((photo) => (
                 <div 
@@ -53,7 +47,6 @@ export default function Gallery({ isDark }) {
                     onClick={() => setSelectedImage(photo)}
                     className="relative group break-inside-avoid rounded-xl overflow-hidden cursor-pointer mb-4"
                 >
-                    {/* Image */}
                     <img 
                         src={photo.src} 
                         alt={photo.caption} 
@@ -70,14 +63,12 @@ export default function Gallery({ isDark }) {
             ))}
         </div>
 
-        {/* Jika tidak ada foto */}
         {filteredPhotos.length === 0 && (
             <div className="text-center py-20 opacity-50">
                 <p>Tidak ada foto di kategori ini.</p>
             </div>
         )}
 
-        {/* === LIGHTBOX MODAL (POPUP) === */}
         {selectedImage && (
             <div 
                 className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
@@ -93,7 +84,7 @@ export default function Gallery({ isDark }) {
 
                 <div 
                     className="max-w-4xl w-full max-h-[90vh] flex flex-col items-center"
-                    onClick={(e) => e.stopPropagation()} // Mencegah tutup jika klik gambar
+                    onClick={(e) => e.stopPropagation()}
                 >
                     <img 
                         src={selectedImage.src} 
