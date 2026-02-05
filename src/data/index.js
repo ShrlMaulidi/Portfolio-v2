@@ -171,6 +171,16 @@ export const projectsData = [
     tech: ["Laravel", "PHP", "Tailwind"],
     link: "#",
     featured: false
+  },
+
+  {
+    id: 6,
+    title: "Company Profile PT Aztara Indo",
+    desc: "Website Company Profile PT Aztara Indo Contraction.",
+    image: "/proyek/aztara.png",
+    tech: ["Laravel", "PHP", "Tailwind"],
+    link: "https://aztaraindo.co.id/",
+    featured: false
   }
 ];
 
