@@ -76,7 +76,7 @@ export const educationData = [
     degree: "S1 Informatika (Bachelor's Degree)",
     year: "2022 - 2026",
     location: "Karawang, Indonesia 🇮🇩",
-    logo: "/img/career/horizon.jpeg" // Ganti dengan logo kampus kamu
+    logo: "/img/career/horizon.jpeg"
   },
 ];
 
@@ -122,6 +122,13 @@ export const achievementsData = [
     issuer: "Alibaba Cloud",
     date: "2025 - 2026",
     image: "/achievement/alibaba3.png"
+  },
+  {
+    id: 7,
+    title: "Sertifikat Magang",
+    issuer: "Kemenkes BBPK Ciloto",
+    date: "2025 - 2026",
+    image: "/achievement/sertifikatmagang.png"
   }
 ];
 
@@ -191,8 +198,8 @@ export const socialMediaData = [
     title: 'Tetap Terhubung',
     desc: 'Hubungi saya via email untuk pertanyaan atau kolaborasi.',
     btnText: 'Pergi ke Gmail',
-    icon: 'Gmail', // Key string untuk mapping icon nanti
-    url: 'mailto:sahrulmaulidi294@gmail.com', // Link Email
+    icon: 'Gmail',
+    url: 'mailto:sahrulmaulidi294@gmail.com',
     color: 'bg-gradient-to-br from-[#d94838] to-[#99251a]', 
     span: 'md:col-span-2'
   },
@@ -242,10 +249,10 @@ export const socialMediaData = [
 export const dashboardData = {
   // 1. Availability Status (Status Ketersediaan)
   availability: {
-    isAvailable: true, // Ubah ke false jika sedang tidak mencari kerja
+    isAvailable: true,
     status: "Open to Work",
     description: "Siap untuk berkontribusi pada proyek inovatif atau posisi Full-time.",
-    link: "/contact" // Mengarah ke halaman kontak
+    link: "/contact" 
   },
 
   // 2. Statistik Angka
