@@ -188,6 +188,23 @@ export const projectsData = [
     tech: ["Laravel", "PHP", "Tailwind"],
     link: "https://aztaraindo.co.id/",
     featured: false
+  },
+
+  {
+    id: 99, // pastikan id unik
+    title: "Desain Logo Personal Branding",
+    desc: "Kumpulan desain logo dan identitas visual yang saya buat untuk kebutuhan personal branding dan klien. Mengedepankan konsep minimalis dan modern.",
+    images: [
+      "/proyek/logo1.png",
+      "/proyek/logo2.png", // Foto 2
+      "/proyek/logo3.png",
+      "/proyek/logo4.png",
+      "/proyek/logo5.png",
+      "/proyek/logo6.png"  // Foto 3
+    ],
+    tech: ["Figma"],
+    link: "",
+    featured: false
   }
 ];
 

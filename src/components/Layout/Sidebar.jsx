@@ -15,7 +15,7 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
     setIsLetterOpen(false); 
     setMobileMenuOpen(false); 
   };
-
+  
   return (
     <>
       {mobileMenuOpen && (
@@ -101,7 +101,6 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                 </motion.div>
               )}
             </AnimatePresence>
-
           </div>
         )}
       </AnimatePresence>
@@ -177,7 +176,6 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                   );
                 })}
               </nav>
-
               <div className="mt-6">
                 <button 
                   onClick={handleOpenModal}
@@ -190,9 +188,7 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                   <svg className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                   Ayo Terhubung 😊
                 </button>
-                  
                 <div className={`h-px w-full my-4 transition-colors duration-500 ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
-
                 <div className="text-center">
                     <p className={`text-[10px] uppercase font-bold tracking-widest transition-colors duration-500 ${isDark ? 'text-[#52525b]' : 'text-[#71717a]'}`}>HAK CIPTA © 2026</p>
                     <p className={`text-[10px] mt-1 transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-[#a1a1aa]'}`}>Sahrul Maulidi. Seluruh hak dilindungi.</p>
