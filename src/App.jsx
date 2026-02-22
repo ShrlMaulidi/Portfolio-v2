@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { LanguageProvider } from "./context/LanguageContext";
 
 import Sidebar from "./components/Layout/Sidebar";
 import Hero from "./components/Sections/Hero";
@@ -11,6 +12,8 @@ import Achievements from "./components/Sections/Achievements";
 import Projects from "./components/Sections/Projects";
 import Dashboard from "./components/Sections/Dashboard";
 import Gallery from "./components/Sections/Gallery";
+import QuizCTA from "./components/Sections/QuizCTA";
+
 
 const PageTransition = ({ children }) => {
   return (
@@ -30,6 +33,7 @@ const Home = ({ isDark }) => (
   <PageTransition>
     <Hero isDark={isDark} />
     <Skills isDark={isDark} />
+    <QuizCTA isDark={isDark} />
   </PageTransition>
 );
 
@@ -143,6 +147,7 @@ export default function App() {
   }, [isDark]);
 
   return (
+    <LanguageProvider>
     <Router>
       <AppContent 
         isDark={isDark} 
@@ -151,5 +156,6 @@ export default function App() {
         setMobileMenuOpen={setMobileMenuOpen} 
       />
     </Router>
+    </LanguageProvider>
   );
 }

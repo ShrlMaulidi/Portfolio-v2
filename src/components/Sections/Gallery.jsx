@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { galleryPhotos } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Gallery({ isDark }) {
+  const { lang } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('Semua');
   const [selectedImage, setSelectedImage] = useState(null);
 
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
+
   const categories = ['Semua', ...new Set(galleryPhotos.map(photo => photo.category))];
+
+  const getCategoryLabel = (cat) => {
+    if (cat === 'Semua') return lang === 'en' ? 'All' : 'Semua';
+    if (lang === 'en') {
+        const photo = galleryPhotos.find(p => p.category === cat);
+        return photo && photo.categoryEn ? photo.categoryEn : cat;
+    }
+    return cat;
+  };
 
   const filteredPhotos = selectedCategory === 'Semua' 
     ? galleryPhotos 
@@ -16,10 +38,12 @@ export default function Gallery({ isDark }) {
         
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Galeri
+                {lang === 'en' ? 'Gallery' : 'Galeri'}
             </h1>
             <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-                Koleksi momen, kegiatan, dan kenangan visual saya.
+                {lang === 'en' 
+                    ? 'A collection of my moments, activities, and visual memories.' 
+                    : 'Koleksi momen, kegiatan, dan kenangan visual saya.'}
             </p>
         </div>
         <div className={`h-px w-full my-8 border-dashed border-b transition-colors duration-500 ease-in-out ${isDark ? 'border-[#27272a]' : 'border-gray-300'}`}></div>
@@ -35,7 +59,7 @@ export default function Gallery({ isDark }) {
                         : (isDark ? 'bg-[#27272a] text-gray-400 hover:text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200')
                     }`}
                 >
-                    {cat}
+                    {getCategoryLabel(cat)}
                 </button>
             ))}
         </div>
@@ -49,14 +73,13 @@ export default function Gallery({ isDark }) {
                 >
                     <img 
                         src={photo.src} 
-                        alt={photo.caption} 
+                        alt={lang === 'en' && photo.captionEn ? photo.captionEn : photo.caption} 
                         className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     
-                    {/* Overlay Hover */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white text-sm font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            {photo.caption}
+                            {lang === 'en' && photo.captionEn ? photo.captionEn : photo.caption}
                         </p>
                     </div>
                 </div>
@@ -65,16 +88,15 @@ export default function Gallery({ isDark }) {
 
         {filteredPhotos.length === 0 && (
             <div className="text-center py-20 opacity-50">
-                <p>Tidak ada foto di kategori ini.</p>
+                <p>{lang === 'en' ? 'No photos in this category.' : 'Tidak ada foto di kategori ini.'}</p>
             </div>
         )}
 
         {selectedImage && (
             <div 
                 className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-                onClick={() => setSelectedImage(null)} // Tutup jika klik area kosong
+                onClick={() => setSelectedImage(null)} 
             >
-                {/* Tombol Close */}
                 <button 
                     className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
                     onClick={() => setSelectedImage(null)}
@@ -88,15 +110,15 @@ export default function Gallery({ isDark }) {
                 >
                     <img 
                         src={selectedImage.src} 
-                        alt={selectedImage.caption} 
+                        alt={lang === 'en' && selectedImage.captionEn ? selectedImage.captionEn : selectedImage.caption} 
                         className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
                     />
                     <div className="mt-4 text-center">
                         <span className="px-3 py-1 bg-white/20 text-white text-xs rounded-full mb-2 inline-block backdrop-blur-md">
-                            {selectedImage.category}
+                            {getCategoryLabel(selectedImage.category)}
                         </span>
                         <p className="text-white text-lg font-medium">
-                            {selectedImage.caption}
+                            {lang === 'en' && selectedImage.captionEn ? selectedImage.captionEn : selectedImage.caption}
                         </p>
                     </div>
                 </div>

@@ -2,8 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { profileData, navItems } from "../../data";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMenuOpen }) {
+  const { lang, setLang } = useLanguage(); // Ambil state bahasa
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
@@ -14,6 +16,21 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
     setShowLetter(true);
     setIsLetterOpen(false); 
     setMobileMenuOpen(false); 
+  };
+
+  // Fungsi pembantu untuk menerjemahkan menu navigasi dengan aman
+  const translateNav = (label) => {
+    if (lang === 'id') return label;
+    const dict = { 
+        "Beranda": "Home", 
+        "Tentang": "About", 
+        "Pencapaian": "Achievements", 
+        "Proyek": "Projects", 
+        "Dasbor": "Dashboard", 
+        "Galleri": "Gallery", 
+        "Kontak": "Contact" 
+    };
+    return dict[label] || label;
   };
   
   return (
@@ -55,7 +72,9 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                       <div className={`p-3 rounded-full mb-2 shadow-lg animate-pulse ${isDark ? 'bg-zinc-700 text-zinc-300' : 'bg-amber-50 text-amber-600'}`}>
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                       </div>
-                      <span className={`font-bold text-xs tracking-widest ${isDark ? 'text-zinc-300' : 'text-amber-700'}`}>BUKA SURAT</span>
+                      <span className={`font-bold text-xs tracking-widest ${isDark ? 'text-zinc-300' : 'text-amber-700'}`}>
+                          {lang === 'en' ? 'OPEN LETTER' : 'BUKA SURAT'}
+                      </span>
                     </div>
 
                   </div>
@@ -77,15 +96,15 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                   </button>
 
                   <h3 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      Mari Terhubung 🤝
+                      {lang === 'en' ? "Let's Connect 🤝" : "Mari Terhubung 🤝"}
                   </h3>
 
                   <div className="space-y-3 text-sm md:text-base leading-relaxed mb-8">
-                      <p>Terima kasih sudah mengunjungi profil saya.</p>
-                      <p>Saya terbuka untuk diskusi, kolaborasi, maupun peluang kerja sama dalam bidang teknologi dan pengembangan web.</p>
-                      <p>Apabila Anda ingin berdiskusi lebih lanjut, jangan ragu untuk menghubungi saya melalui WhatsApp.</p>
-                      <p>Silakan klik tombol di bawah untuk langsung terhubung dengan saya.<br/>Saya akan dengan senang hati merespons pesan Anda.</p>
-                      <p className="pt-4">Salam hangat,<br/><strong className={`text-lg font-bold ${isDark ? 'text-white' : 'text-black'}`}>Sahrul Maulidi</strong></p>
+                      <p>{lang === 'en' ? "Thank you for visiting my profile." : "Terima kasih sudah mengunjungi profil saya."}</p>
+                      <p>{lang === 'en' ? "I am open to discussions, collaborations, and partnership opportunities in technology and web development." : "Saya terbuka untuk diskusi, kolaborasi, maupun peluang kerja sama dalam bidang teknologi dan pengembangan web."}</p>
+                      <p>{lang === 'en' ? "If you'd like to discuss further, please don't hesitate to contact me via WhatsApp." : "Apabila Anda ingin berdiskusi lebih lanjut, jangan ragu untuk menghubungi saya melalui WhatsApp."}</p>
+                      <p>{lang === 'en' ? <>Please click the button below to connect with me directly.<br/>I will gladly respond to your message.</> : <>Silakan klik tombol di bawah untuk langsung terhubung dengan saya.<br/>Saya akan dengan senang hati merespons pesan Anda.</>}</p>
+                      <p className="pt-4">{lang === 'en' ? "Warm regards," : "Salam hangat,"}<br/><strong className={`text-lg font-bold ${isDark ? 'text-white' : 'text-black'}`}>Sahrul Maulidi</strong></p>
                   </div>
 
                   <a 
@@ -96,7 +115,7 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                       className="w-full py-3.5 font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg bg-[#25D366] hover:bg-[#1ebd57] text-white shadow-green-500/30"
                   >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                      Kirim Pesan WhatsApp
+                      {lang === 'en' ? 'Send WhatsApp Message' : 'Kirim Pesan WhatsApp'}
                   </a>
                 </motion.div>
               )}
@@ -130,13 +149,27 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                       <h2 className={`text-xl font-bold tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-gray-900'}`}>{profileData.name}</h2>
                       <img className="w-5 h-5" src="/img/verified.png" alt="Verified" />
                   </div>
-                  <p className={`text-sm font-medium transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-gray-500'}`}>{profileData.username}</p>
+                  <p className={`text-sm font-medium transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-gray-500'}`}>
+                      {profileData.username}
+                  </p>
               </div>
 
               <div className="flex justify-center gap-3 mb-6">
                   <div className={`p-1 rounded-full border flex items-center gap-1 transition-colors duration-500 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-[#f4f4f5] border-transparent'}`}>
-                      <button className="w-8 h-8 rounded-full flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity text-sm">🇺🇸</button>
-                      <button className="w-8 h-8 rounded-full bg-[#4ade80] flex items-center justify-center shadow-md text-white text-sm">🇮🇩</button>
+                      {/* Tombol Bendera US */}
+                      <button 
+                        onClick={() => setLang('en')} 
+                        className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 text-sm ${lang === 'en' ? 'bg-[#4ade80] text-white shadow-md' : 'opacity-40 hover:opacity-100'}`}
+                      >
+                          🇺🇸
+                      </button>
+                      {/* Tombol Bendera ID */}
+                      <button 
+                        onClick={() => setLang('id')} 
+                        className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 text-sm ${lang === 'id' ? 'bg-[#4ade80] text-white shadow-md' : 'opacity-40 hover:opacity-100'}`}
+                      >
+                          🇮🇩
+                      </button>
                   </div>
 
                   <div className={`p-1 rounded-full border flex items-center gap-1 transition-colors duration-500 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-[#f4f4f5] border-transparent'}`}>
@@ -167,7 +200,9 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                     >
                         <div className="flex items-center gap-3">
                             <svg className={`w-5 h-5 transition-transform duration-300 ease-in-out group-hover:-rotate-12 ${active ? (isDark ? 'text-white' : 'text-gray-900') : (isDark ? 'text-[#71717a] group-hover:text-white' : 'text-[#71717a] group-hover:text-gray-900')}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.iconPath}></path></svg>
-                            <span className="text-sm font-medium">{item.label}</span>
+                            <span className="text-sm font-medium">
+                                {translateNav(item.label)}
+                            </span>
                         </div>
                         {active && (
                              <svg className={`w-4 h-4 transition-colors duration-500 ${isDark ? 'text-[#52525b]' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -186,12 +221,16 @@ export default function Sidebar({ isDark, setIsDark, mobileMenuOpen, setMobileMe
                       }`}
                 >
                   <svg className="w-5 h-5 transition-transform duration-300 group-hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                  Ayo Terhubung 😊
+                  {lang === 'en' ? "Let's Connect 😊" : "Ayo Terhubung 😊"}
                 </button>
                 <div className={`h-px w-full my-4 transition-colors duration-500 ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
                 <div className="text-center">
-                    <p className={`text-[10px] uppercase font-bold tracking-widest transition-colors duration-500 ${isDark ? 'text-[#52525b]' : 'text-[#71717a]'}`}>HAK CIPTA © 2026</p>
-                    <p className={`text-[10px] mt-1 transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-[#a1a1aa]'}`}>Sahrul Maulidi. Seluruh hak dilindungi.</p>
+                    <p className={`text-[10px] uppercase font-bold tracking-widest transition-colors duration-500 ${isDark ? 'text-[#52525b]' : 'text-[#71717a]'}`}>
+                        {lang === 'en' ? 'COPYRIGHT' : 'HAK CIPTA'} © 2026
+                    </p>
+                    <p className={`text-[10px] mt-1 transition-colors duration-500 ${isDark ? 'text-[#71717a]' : 'text-[#a1a1aa]'}`}>
+                        Sahrul Maulidi. {lang === 'en' ? 'All rights reserved.' : 'Seluruh hak dilindungi.'}
+                    </p>
                 </div>
               </div>
 

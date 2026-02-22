@@ -1,7 +1,10 @@
 import { skillsData } from "../../data";
 import SkillBadge from "../UI/SkillBadge";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Skills({ isDark }) {
+  const { lang } = useLanguage();
+
   return (
     <div className="mb-8 transition-colors duration-500 ease-in-out">
         <div className="flex items-center gap-2 mb-6">
@@ -9,12 +12,12 @@ export default function Skills({ isDark }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
             <h3 className={`text-xl md:text-2xl font-bold transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Keahlian
+                {lang === 'en' ? 'Skills' : 'Keahlian'}
             </h3>
         </div>
 
         <p className={`text-sm md:text-base mb-6 transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-            Keahlian profesional saya.
+            {lang === 'en' ? 'My professional skills.' : 'Keahlian profesional saya.'}
         </p>
             
         <div className="flex flex-wrap gap-3 md:gap-4 justify-start">

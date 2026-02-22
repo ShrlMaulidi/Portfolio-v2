@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { socialMediaData } from '../../data';
 import emailjs from '@emailjs/browser'; 
+import { useLanguage } from '../../context/LanguageContext';
 
 const Icons = {
   Gmail: ({ className }) => (
@@ -31,6 +32,7 @@ const Icons = {
 };
 
 export default function Contact({ isDark }) {
+  const { lang } = useLanguage();
   const form = useRef();
   const [isSending, setIsSending] = useState(false);
 
@@ -45,12 +47,12 @@ export default function Contact({ isDark }) {
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then((result) => {
           console.log(result.text);
-          alert('Pesan berhasil terkirim! Terima kasih.');
+          alert(lang === 'en' ? 'Message sent successfully! Thank you.' : 'Pesan berhasil terkirim! Terima kasih.');
           setIsSending(false);
           e.target.reset();
       }, (error) => {
           console.log(error.text);
-          alert('Gagal mengirim pesan. Silakan coba lagi atau hubungi via Email langsung.');
+          alert(lang === 'en' ? 'Failed to send message. Please try again or contact via Email directly.' : 'Gagal mengirim pesan. Silakan coba lagi atau hubungi via Email langsung.');
           setIsSending(false);
       });
   };
@@ -60,19 +62,18 @@ export default function Contact({ isDark }) {
 
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-2 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Kontak
+                {lang === 'en' ? 'Contact' : 'Kontak'}
             </h1>
             <p className={`text-base md:text-lg transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-                Mari kita terhubung
+                {lang === 'en' ? 'Let\'s connect' : 'Mari kita terhubung'}
             </p>
         </div>
 
         <div className={`h-px w-full my-8 border-dashed transition-colors duration-500 ease-in-out ${isDark ? 'bg-[#27272a]' : 'bg-gray-200'}`}></div>
 
-        {/* Section Social Media */}
         <div className="mb-6">
             <h2 className={`text-lg font-medium transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Temukan saya di media sosial
+                {lang === 'en' ? 'Find me on social media' : 'Temukan saya di media sosial'}
             </h2>
         </div>
 
@@ -89,14 +90,12 @@ export default function Contact({ isDark }) {
                             shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1
                         `}
                     >
-                        {/* Giant Background Icon */}
                         {IconComponent && (
                             <div className="absolute -top-16 -left-16 z-0 pointer-events-none transform rotate-12 opacity-5 text-white">
                                 <IconComponent className="w-96 h-96" />
                             </div>
                         )}
 
-                        {/* Background Image Khusus Instagram */}
                         {card.icon === 'Instagram' && (
                           <img 
                             src="/kontak/back.png" 
@@ -105,17 +104,15 @@ export default function Contact({ isDark }) {
                           />
                         )}
 
-                        {/* Blurs */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none z-0"></div>
                         <div className="absolute bottom-0 left-0 w-40 h-40 bg-black/10 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none z-0"></div>
 
-                        {/* Content */}
                         <div className="relative z-10">
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">
-                                {card.title}
+                                {lang === 'en' && card.titleEn ? card.titleEn : card.title}
                             </h3>
                             <p className="text-white/80 text-sm md:text-base font-medium mb-8 max-w-sm leading-relaxed">
-                                {card.desc}
+                                {lang === 'en' && card.descEn ? card.descEn : card.desc}
                             </p>
                             
                             <a 
@@ -124,12 +121,11 @@ export default function Contact({ isDark }) {
                                 rel="noopener noreferrer"
                                 className="inline-flex bg-white text-black px-5 py-2.5 rounded-lg text-sm font-bold items-center gap-2 hover:bg-gray-100 transition-colors shadow-sm cursor-pointer"
                             >
-                                {card.btnText}
+                                {lang === 'en' && card.btnTextEn ? card.btnTextEn : card.btnText}
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             </a>
                         </div>
 
-                        {/* Icon Overlay */}
                         <div className="absolute bottom-6 right-6 opacity-90 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-lg z-10">
                             <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20">
                                 {IconComponent ? <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-white" /> : null}
@@ -145,7 +141,7 @@ export default function Contact({ isDark }) {
 
         <div className="mb-6">
             <h2 className={`text-lg font-medium mb-6 transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Atau kirim saya pesan
+                {lang === 'en' ? 'Or send me a message' : 'Atau kirim saya pesan'}
             </h2>
 
             <form ref={form} onSubmit={sendEmail} className="space-y-4">
@@ -153,7 +149,7 @@ export default function Contact({ isDark }) {
                     <input 
                         type="text" 
                         name="user_name" 
-                        placeholder="Name" 
+                        placeholder={lang === 'en' ? 'Name' : 'Nama'} 
                         required
                         className={`w-full p-4 rounded-xl outline-none border transition-all duration-300
                         ${isDark 
@@ -174,7 +170,7 @@ export default function Contact({ isDark }) {
                 <textarea 
                     name="message" 
                     rows="4" 
-                    placeholder="Message" 
+                    placeholder={lang === 'en' ? 'Message' : 'Pesan'} 
                     required
                     className={`w-full p-4 rounded-xl outline-none border transition-all duration-300 resize-none
                     ${isDark 
@@ -197,10 +193,10 @@ export default function Contact({ isDark }) {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            Sending...
+                            {lang === 'en' ? 'Sending...' : 'Mengirim...'}
                         </>
                     ) : (
-                        'Send Email'
+                        lang === 'en' ? 'Send Email' : 'Kirim Email'
                     )}
                 </button>
             </form>

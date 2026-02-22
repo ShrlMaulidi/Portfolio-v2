@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projectsData, skillsData } from '../../data'; 
+import { projectsData, skillsData } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Projects({ isDark }) {
+  const { lang, t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -56,10 +58,10 @@ export default function Projects({ isDark }) {
     <div className="mb-10 animate-fade-in-up transition-colors duration-500 ease-in-out">
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Proyek
+                {t('proyekTitle')}
             </h1>
             <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-                Pameran proyek pribadi dan open-source yang telah saya buat atau kontribusikan.
+                {t('proyekDesc')}
             </p>
         </div>
 
@@ -75,7 +77,7 @@ export default function Projects({ isDark }) {
                     <div className="relative w-full h-56 overflow-hidden">
                         <img 
                             src={getImages(project)[0]} 
-                            alt={project.title} 
+                            alt={lang === 'en' && project.titleEn ? project.titleEn : project.title} 
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         
@@ -84,7 +86,7 @@ export default function Projects({ isDark }) {
                                 onClick={() => openModal(project)}
                                 className="text-white font-semibold text-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 cursor-pointer"
                             >
-                                Lihat Detail 
+                                {t('lihatDetail')}
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                             </button>
                         </div>
@@ -106,10 +108,10 @@ export default function Projects({ isDark }) {
 
                     <div className="p-6 flex flex-col flex-1">
                         <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                            {project.title}
+                            {lang === 'en' && project.titleEn ? project.titleEn : project.title}
                         </h3>
                         <p className={`text-sm mb-6 line-clamp-3 leading-relaxed transition-colors duration-300 flex-1 ${isDark ? 'text-[#a1a1aa]' : 'text-gray-600'}`}>
-                            {project.desc}
+                            {lang === 'en' && project.descEn ? project.descEn : project.desc}
                         </p>
 
                         <div className="flex items-center gap-3 mt-auto flex-wrap">
@@ -165,7 +167,7 @@ export default function Projects({ isDark }) {
                         <div className={`relative w-full h-48 md:h-auto md:w-1/2 bg-[#0a0a0a] flex shrink-0 items-center justify-center group`}>
                             <img 
                                 src={activeImages[currentImageIndex]} 
-                                alt={`${selectedProject.title} - img ${currentImageIndex + 1}`} 
+                                alt={`${lang === 'en' && selectedProject.titleEn ? selectedProject.titleEn : selectedProject.title} - img ${currentImageIndex + 1}`} 
                                 className="w-full h-full object-contain p-3 md:p-6 transition-all duration-300"
                             />
 
@@ -193,7 +195,7 @@ export default function Projects({ isDark }) {
                         <div className={`w-full md:w-1/2 p-5 md:p-6 flex flex-col justify-between ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                             <div>
                                 <h2 className={`text-xl md:text-2xl font-bold mb-3 pr-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                    {selectedProject.title}
+                                    {lang === 'en' && selectedProject.titleEn ? selectedProject.titleEn : selectedProject.title}
                                 </h2>
 
                                 <div className="flex items-center gap-2 mb-4 flex-wrap">
@@ -205,9 +207,11 @@ export default function Projects({ isDark }) {
                                 </div>
 
                                 <div className="mb-4">
-                                    <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 md:mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>Tentang Proyek</h4>
+                                    <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 md:mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                                        {t('tentangProyek')}
+                                    </h4>
                                     <p className="text-xs md:text-sm leading-relaxed whitespace-pre-line line-clamp-4 md:line-clamp-none">
-                                        {selectedProject.desc}
+                                        {lang === 'en' && selectedProject.descEn ? selectedProject.descEn : selectedProject.desc}
                                     </p>
                                 </div>
                             </div>
@@ -221,12 +225,12 @@ export default function Projects({ isDark }) {
                                         className={`w-full py-2.5 md:py-3 text-sm rounded-xl font-bold flex items-center justify-center gap-2 transition-all hover:-translate-y-1 hover:shadow-lg
                                             ${isDark ? 'bg-white text-black hover:bg-gray-200' : 'bg-[#18181b] text-white hover:bg-black'}`}
                                     >
-                                        Kunjungi Situs Web
+                                        {t('kunjungiWeb')}
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                                     </a>
                                 ) : (
                                     <button disabled className={`w-full py-2.5 md:py-3 text-sm rounded-xl font-bold flex items-center justify-center gap-2 cursor-not-allowed ${isDark ? 'bg-[#27272a] text-gray-500' : 'bg-gray-100 text-gray-400'}`}>
-                                        Tautan Tidak Tersedia
+                                        {t('tautanMati')}
                                     </button>
                                 )}
                             </div>

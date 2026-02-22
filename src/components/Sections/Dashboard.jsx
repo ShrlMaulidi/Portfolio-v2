@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { dashboardData } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Dashboard({ isDark }) {
+  const { lang } = useLanguage();
   const { availability, topLanguages, tools, learningGoals } = dashboardData;
   
   const [githubData, setGithubData] = useState({
@@ -53,7 +55,7 @@ export default function Dashboard({ isDark }) {
       color: 'bg-blue-500/10 text-blue-500' 
     },
     { 
-      label: 'Total Project', 
+      label: lang === 'en' ? 'Total Projects' : 'Total Project', 
       value: '12+',
       icon: '🚀', 
       color: 'bg-green-500/10 text-green-500' 
@@ -64,10 +66,14 @@ export default function Dashboard({ isDark }) {
     <div className="mb-10 animate-fade-in-up transition-colors duration-500 ease-in-out">
         <div className="mb-8">
              <h1 className={`text-3xl md:text-4xl font-bold mb-3 tracking-tight transition-colors duration-500 ease-in-out ${isDark ? 'text-white' : 'text-[#18181b]'}`}>
-                Dasbor
+                {lang === 'en' ? 'Dashboard' : 'Dasbor'}
             </h1>
             <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
-                Data statistik diambil secara <strong>Real-time</strong> dari GitHub API.
+                {lang === 'en' ? (
+                  <>Statistical data is fetched <strong>Real-time</strong> from the GitHub API.</>
+                ) : (
+                  <>Data statistik diambil secara <strong>Real-time</strong> dari GitHub API.</>
+                )}
             </p>
         </div>
 
@@ -88,11 +94,11 @@ export default function Dashboard({ isDark }) {
                           <span className={`relative inline-flex rounded-full h-3 w-3 ${availability.isAvailable ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                         </span>
                         <h3 className={`text-lg font-bold tracking-tight ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
-                            {availability.status}
+                            {lang === 'en' && availability.statusEn ? availability.statusEn : availability.status}
                         </h3>
                     </div>
                     <p className={`text-sm leading-relaxed mb-6 ${isDark ? 'text-emerald-100/70' : 'text-emerald-800/70'}`}>
-                        {availability.description}
+                        {lang === 'en' && availability.descriptionEn ? availability.descriptionEn : availability.description}
                     </p>
                 </div>
                 
@@ -123,28 +129,27 @@ export default function Dashboard({ isDark }) {
             <div className={`md:col-span-2 p-6 rounded-2xl border flex flex-col justify-between
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 <h3 className={`text-lg font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    Bahasa Pemrograman Teratas
+                    {lang === 'en' ? 'Top Programming Languages' : 'Bahasa Pemrograman Teratas'}
                 </h3>
                 <div className="space-y-5">
-                    {topLanguages.map((lang, idx) => (
+                    {topLanguages.map((langItem, idx) => (
                         <div key={idx}>
                             <div className="flex justify-between text-sm mb-2">
-                                <span className={isDark ? 'text-gray-300' : 'text-gray-700'}>{lang.name}</span>
-                                <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{lang.percent}%</span>
+                                <span className={isDark ? 'text-gray-300' : 'text-gray-700'}>{langItem.name}</span>
+                                <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{langItem.percent}%</span>
                             </div>
                             <div className={`w-full h-3 rounded-full ${isDark ? 'bg-[#27272a]' : 'bg-gray-100'}`}>
-                                <div className={`h-3 rounded-full ${lang.color}`} style={{ width: `${lang.percent}%` }}></div>
+                                <div className={`h-3 rounded-full ${langItem.color}`} style={{ width: `${langItem.percent}%` }}></div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* 4. TOOLS */}
             <div className={`md:col-span-1 p-6 rounded-2xl border flex flex-col
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    Tools Favorit
+                    {lang === 'en' ? 'Favorite Tools' : 'Tools Favorit'}
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
                     {tools.map((tool, idx) => (
@@ -152,7 +157,9 @@ export default function Dashboard({ isDark }) {
                             <span className="text-2xl">{tool.icon}</span>
                             <div className="flex flex-col">
                                 <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{tool.name}</span>
-                                <span className={`text-[10px] ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{tool.desc}</span>
+                                <span className={`text-[10px] ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                                    {lang === 'en' && tool.descEn ? tool.descEn : tool.desc}
+                                </span>
                             </div>
                         </div>
                     ))}
@@ -164,7 +171,7 @@ export default function Dashboard({ isDark }) {
                 
                 <div className="flex items-center justify-between mb-6">
                     <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                        Kontribusi GitHub (Real-time)
+                        {lang === 'en' ? 'GitHub Contributions (Real-time)' : 'Kontribusi GitHub (Real-time)'}
                     </h3>
                     <a href="https://github.com/ShrlMaulidi" target="_blank" rel="noreferrer" className="text-xs text-green-500 font-mono bg-green-500/10 px-2 py-1 rounded hover:bg-green-500/20 transition">
                         @ShrlMaulidi
@@ -182,14 +189,14 @@ export default function Dashboard({ isDark }) {
                 </div>
                 
                 <p className={`text-xs mt-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                    *Grafik ini diambil langsung dari profil GitHub saya.
+                    {lang === 'en' ? '*This chart is fetched directly from my GitHub profile.' : '*Grafik ini diambil langsung dari profil GitHub saya.'}
                 </p>
             </div>
 
             <div className={`md:col-span-1 p-6 rounded-2xl border
                 ${isDark ? 'bg-[#18181b] border-[#27272a]' : 'bg-white border-gray-200'}`}>
                 <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    Target Belajar
+                    {lang === 'en' ? 'Learning Goals' : 'Target Belajar'}
                 </h3>
                 <div className="space-y-4">
                     {learningGoals.map((goal, idx) => (
@@ -199,7 +206,7 @@ export default function Dashboard({ isDark }) {
                                 <span className={`font-medium text-sm ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{goal.name}</span>
                             </div>
                             <span className={`text-[10px] font-mono px-2 py-0.5 rounded bg-opacity-10 ${goal.color.replace('text-', 'bg-')} ${goal.color}`}>
-                                {goal.status}
+                                {lang === 'en' && goal.statusEn ? goal.statusEn : goal.status}
                             </span>
                         </div>
                     ))}
