@@ -46,13 +46,18 @@ export default function QuizCTA({ isDark }) {
 
           <button 
              onClick={() => setIsModalOpen(true)}
-             className={`relative z-10 w-full md:w-auto whitespace-nowrap px-6 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2
+             className={`relative z-10 w-full md:w-auto whitespace-nowrap px-5 py-1 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2
              ${isDark 
                 ? 'bg-green-500 text-white hover:bg-green-400 shadow-[0_0_15px_rgba(34,197,94,0.2)]' 
                 : 'bg-green-600 text-white hover:bg-green-500 shadow-[0_0_15px_rgba(22,163,74,0.2)]'}`}
           >
              {lang === 'en' ? 'Play Now' : 'Mainkan Sekarang'}
-             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+             <img 
+                src="/go.png" 
+                alt="Profile" 
+                className="w-10 h-10"
+            />
+             {/* <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> */}
           </button>
        </motion.div>
     </div>

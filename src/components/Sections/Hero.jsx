@@ -14,14 +14,14 @@ export default function Hero({ isDark }) {
         <div className={`flex flex-wrap items-center gap-4 text-sm font-medium mb-6 transition-colors duration-500 ease-in-out ${isDark ? 'text-[#a1a1aa]' : 'text-[#52525b]'}`}>
             <span className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-zinc-500"></span>
-                {profileData.status}
+                {lang === 'en' && profileData.statusEn ? profileData.statusEn : profileData.status}
             </span>
             <span className="flex items-center gap-3">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
-                {profileData.job}
+                {lang === 'en' && profileData.jobEn ? profileData.jobEn : profileData.job}
             </span>
         </div>
 

@@ -52,7 +52,7 @@ export const careerHistory = [
       "Menggunakan teknologi React JS & Laravel 11",
       "Menyusun laporan dan membuat E-Book Panduan Penggunaan."
     ],
-    responsibilitiesEn: [ // 👈 Tambahan EN
+    responsibilitiesEn: [
       "Developed a task management website.",
       "Optimized MySQL database queries to improve backend performance.",
       "Utilized React JS & Laravel 11 technologies.",

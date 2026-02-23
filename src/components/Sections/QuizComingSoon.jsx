@@ -49,7 +49,11 @@ export default function QuizComingSoon({ isOpen, onClose, isDark }) {
 
              <div className="relative mb-6">
                 <div className="w-20 h-20 bg-gradient-to-tr from-green-400 to-blue-500 rounded-2xl flex items-center justify-center text-4xl shadow-[0_0_30px_rgba(34,197,94,0.4)] animate-pulse">
-                    🚀
+                <img 
+                src="/coming.png" 
+                alt="Profile" 
+                className="w-12 h-12"
+            />
                 </div>
              </div>
 
