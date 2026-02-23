@@ -30,7 +30,11 @@ export default function QuizCTA({ isDark }) {
           <div className="flex items-center gap-4 md:gap-5 z-10 w-full md:w-auto">
              <div className={`w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-2xl flex items-center justify-center text-3xl shadow-sm transition-colors duration-500
                 ${isDark ? 'bg-[#27272a] text-white border border-[#3f3f46]' : 'bg-white text-gray-900 border border-gray-100'}`}>
-                🎮
+                <img 
+                src="/ghost.png" 
+                alt="Profile" 
+                className="w-12 h-12"
+            />
              </div>
              <div className="flex flex-col">
                 <h3 className={`text-lg md:text-2xl font-bold mb-1 transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
